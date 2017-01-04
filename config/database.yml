@@ -21,5 +21,14 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+
+database: myexopets_db
+
+host: localhost
+
+username: myexopets_user
+
+password: Zxcvvcxz123
+
+encoding: utf8
