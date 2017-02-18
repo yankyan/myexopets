@@ -74,7 +74,7 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-config.action_mailer.default_url_options = { host: 'http://myexopets.ru/', port: 3000 }
+config.action_mailer.default_url_options = { host: 'http://myexopets.herokuapp.com/', port: 3000 }
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
