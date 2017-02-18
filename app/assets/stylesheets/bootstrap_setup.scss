@@ -4,6 +4,7 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One');
 @import url('https://fonts.googleapis.com/css?family=Crafty+Girls');
 @import url('https://fonts.googleapis.com/css?family=Marck+Script');
+@import url('https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet');
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
 
@@ -16,7 +17,7 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 }
 
 .textlogo {
-  font-family: 'Crafty Girls', cursive;
+  font-family: 'Barrio', cursive;
   font-size: 1.5rem
 
 }
