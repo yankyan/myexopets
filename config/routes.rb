@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pets
   devise_for :users
 root 'pages#landing'
 get 'pages/about'
