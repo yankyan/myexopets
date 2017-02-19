@@ -40,11 +40,14 @@
       <br>
       <div class="actions">
     <%= f.submit "Обновить", class: "btn btn-success"  %>
-        <%= button_to "Удалить аккаунт", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "вы уверенны, что хотите удалить ваш аккаунт?" }, method: :delete %>
+      </div>
   <% end %>
-  </div>
+
+  <%= button_to "Удалить аккаунт", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "вы уверенны, что хотите удалить ваш аккаунт?" }, method: :delete %>
 
 
-  <%= link_to "Назад", :back %>
 
+
+
+<%= link_to "Назад", :back %>
 </div>
