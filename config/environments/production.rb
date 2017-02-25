@@ -90,7 +90,7 @@ Rails.application.configure do
       address:              'smtp.yandex.ru',
       port:                 465,
       domain:               'myexopets.ru',
-      user_name:            ENV.fetch('MAIL_ACCONT'),
+      user_name:            ENV.fetch('MAIL_ACCOUNT'),
       password:             ENV.fetch('MAIL_PASSWORD'),
       authentication:       'plain',
       enable_starttls_auto: true  }

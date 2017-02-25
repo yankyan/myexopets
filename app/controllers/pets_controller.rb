@@ -29,7 +29,7 @@ before_action  :authenticate_user!
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: 'Информация о питомце успешно сохранена.' }
+        format.html { redirect_to pets_path, notice: 'Информация о питомце успешно сохранена.' }
         format.json { render :show, status: :created, location: @pet }
       else
         format.html { render :new }
