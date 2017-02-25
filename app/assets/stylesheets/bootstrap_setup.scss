@@ -10,7 +10,9 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 
 
 .container-background {
+  min-height: 100vh;
   width: 100%;
+  height: auto;
   background-size: cover;
   background-image: url(image_path("background.jpg"));
   background-attachment: fixed;
