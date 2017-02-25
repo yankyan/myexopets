@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :trackable,
-         :validatable
+         :validatable,
+         :confirmable
   has_many :pets, dependent: :destroy
 
 end

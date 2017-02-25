@@ -1,16 +1,17 @@
-<h2>Resend confirmation instructions</h2>
+<div class="form-control">
+  <h2>Подтверждение аккаунта</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
+    <%= f.label :email, class:"col-2 col-form-label" %><br />
+    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"col-10 form-control" %>
+<br>
+    <%= f.submit "Получить инструкции", class: "btn btn-success"  %>
+<br>
 <% end %>
-
+  <br>
 <%= render "devise/shared/links" %>
+  <br><br/>
+</div>
