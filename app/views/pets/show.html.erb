@@ -1,24 +1,39 @@
-<p id="notice"><%= notice %></p>
+<table class="table">
+<tr>
+ <th>Владелец: <%= @pet.user.nikname %></th>
+  <th>Имя питомца: <%= @pet.name %></th>
+  <th>Дата рождения питомца: <%= @pet.bday %></th>
+</tr>
+</table>
+<strong>Описание:</strong>   <%= @pet.desk %>
 
-<p>
-  <strong>Владелец:</strong>
-  <%= @pet.user.nikname %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @pet.name %>
-</p>
 
-<p>
-  <strong>Desk:</strong>
-  <%= @pet.desk %>
-</p>
 
-<p>
-  <strong>Bday:</strong>
-  <%= @pet.bday %>
-</p>
 
-<%= link_to 'Edit', edit_pet_path(@pet) %> |
-<%= link_to 'Back', pets_path %>
+<table class="table table-inverse">
+  <thead>
+  <tr>
+    <th>Дата кормления</th>
+    <th>Дополнительная информация</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+<% @pet.feeds.each do |feed| %>
+
+
+    <td><%= feed.date %></td>
+      <td><%= feed.desk %></td>
+
+      <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+
+    </tr>
+<% end %>
+</tbody>
+</table>
+<%= link_to 'Покормить', pets_feeding_path(@pet), class: "btn btn-success" %>
+<%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "btn btn-success" %>
+
+<%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger" %>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myexopets</title>
+    <title>Myexopets - удобный дневник для владельцев экзотических животных. </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,9 +12,10 @@
   <div class="container-fluid container-background">
   <div class="container">
   <%= render "layouts/navigation" %>
+    <div class="jumbotron">
   <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-    <div class="jumbotron">
+
     <%= yield %>
     </div>
     </div>

@@ -1,16 +1,16 @@
-<h2>Forgot your password?</h2>
+<h2>Забыли пароль?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :Укажите_email_который_использовали_при_регистрации %><br>
     <%= f.email_field :email, autofocus: true %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
+    <%= f.submit "Сбросить пароль", class: "btn btn-success" %>
+  </div><br>
 <% end %>
 
 <%= render "devise/shared/links" %>

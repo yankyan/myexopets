@@ -7,6 +7,6 @@ class User < ApplicationRecord
          :rememberable,
          :trackable,
          :validatable
-  has_many :pets
+  has_many :pets, dependent: :destroy
 
 end

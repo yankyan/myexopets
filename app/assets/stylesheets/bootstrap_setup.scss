@@ -8,6 +8,7 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
 
+
 .container-background {
   width: 100%;
   height: 100vh;
@@ -20,5 +21,16 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 .textlogo {
   font-family: 'Barrio', cursive;
   font-size: 1.5rem
+
+}
+.pet-name A{
+  font-weight: bold;
+  color: #EFEFEF;
+  text-decoration-line: line-through;
+
+}
+.pet-name A:hover{
+  color: #EFEFEF;
+  text-decoration-line: line-through;
 
 }

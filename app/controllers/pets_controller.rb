@@ -29,7 +29,7 @@ before_action  :authenticate_user!
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
+        format.html { redirect_to @pet, notice: 'Информация о питомце успешно сохранена.' }
         format.json { render :show, status: :created, location: @pet }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ before_action  :authenticate_user!
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
+        format.html { redirect_to @pet, notice: 'Информация о питомце успешно обновлена.' }
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ before_action  :authenticate_user!
   def destroy
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.html { redirect_to pets_url, notice: 'Информация о питомце успешно удалена' }
       format.json { head :no_content }
     end
   end
