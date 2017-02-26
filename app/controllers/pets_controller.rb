@@ -2,10 +2,11 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
 before_action  :authenticate_user!
   before_action :owner, except: [:index, :new, :create]
+  helper_method :sort_column, :sort_direction
   # GET /pets
   # GET /pets.json
   def index
-    @pets = current_user.pets
+    @pets = current_user.pets.order(sort_column + " " + sort_direction)
   end
 
   # GET /pets/1
@@ -63,6 +64,13 @@ before_action  :authenticate_user!
   end
 
   private
+  def sort_column
+    current_user.pets.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
   def owner
     @pet = current_user.pets.find_by(id: params[:id])
     redirect_to pets_path if @pet.nil?
@@ -74,6 +82,6 @@ before_action  :authenticate_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:name, :desk, :bday)
+      params.require(:pet).permit(:name, :desk, :bday, :feedtimes)
     end
 end

@@ -3,6 +3,7 @@
  <th>Владелец: <%= @pet.user.nikname %></th>
   <th>Имя питомца: <%= @pet.name %></th>
   <th>Дата рождения питомца: <%= @pet.bday %></th>
+  <th>Интервал кормления: <%= @pet.feedtimes %> (в днях)</th>
 </tr>
 </table>
 <strong>Описание:</strong>   <%= @pet.desk %>
@@ -21,7 +22,7 @@
   </thead>
 
   <tbody>
-<% @pet.feeds.each do |feed| %>
+<% @pet.feeds.order(:date).reverse_order.each do |feed| %>
 
 
     <td><%= feed.date %></td>

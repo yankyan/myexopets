@@ -5,10 +5,11 @@
 <table class="table table-inverse">
   <thead>
     <tr>
-      <th>Имя</th>
-      <th>Описание</th>
-      <th>Дата рождения</th>
-      <th>Последнее кормления</th>
+      <th><%= sortable "name", "Идентификатор"%></th>
+
+      <th><%= sortable "bday", "Дата рождения" %></th>
+      <th><%= sortable "lastfeed", "Последнее кормление"%></th>
+      <th><%= sortable "nextfeed", "Следующее кормление"%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +18,10 @@
     <% @pets.each do |pet| %>
 
         <td class="pet-name"><%= link_to pet.name, pet %></td>
-        <td><%= pet.desk %></td>
+
         <td><%= pet.bday %></td>
-        <td><%= unless pet.feeds.last.nil?
-                   pet.feeds.last.date
-                end %></td>
+      <td><%= pet.lastfeed%></td>
+      <td><%= pet.nextfeed%></td>
       <td>
       <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
         <%= link_to 'Покормить', pets_feeding_path(pet), class: "btn btn-success" %>

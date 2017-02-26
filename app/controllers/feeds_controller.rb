@@ -32,6 +32,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       if @feed.save
+        feeding
         format.html { redirect_to pets_path, notice: 'Информация о кормлении успешно сохранена.' }
         format.json { render :show, status: :created, location: @feed }
       else
@@ -46,6 +47,7 @@ class FeedsController < ApplicationController
   def update
     respond_to do |format|
       if @feed.update(feed_params)
+        feeding
         format.html { redirect_to @feed, notice: 'Информация успешно обновлена.' }
         format.json { render :show, status: :ok, location: @feed }
       else
@@ -59,6 +61,7 @@ class FeedsController < ApplicationController
   # DELETE /feeds/1.json
   def destroy
     @feed.destroy
+    feeding
     respond_to do |format|
       format.html { redirect_to pet_path(@feed.pet_id), notice: 'Информация о кормлении успешно удалена' }
       format.json { head :no_content }
@@ -66,6 +69,13 @@ class FeedsController < ApplicationController
   end
 
   private
+    def feeding
+      @pet = Pet.find(@feed.pet_id)
+      @pet.lastfeed = @pet.feeds.order(:date).last.date
+      @pet.nextfeed=@pet.lastfeed+@pet.feedtimes
+      @pet.save
+
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_feed
       @feed = Feed.find(params[:id])

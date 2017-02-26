@@ -8,6 +8,27 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
 
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+A{
+  color: #EFEFEF;
+}
+A:hover{
+  color: #EFEFEF;
+}
+
+.pretty th .asc {
+  background-image: glyphicon glyphicon-arrow-up;
+}
+
+.pretty th .desc {
+  background-image: url(/images/down_arrow.gif);
+}
+
+
 
 .container-background {
   min-height: 100vh;

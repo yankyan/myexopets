@@ -13,6 +13,9 @@
     <%= f.text_area :desk, class:"form-control" %>
     <%= f.label :День_рождения_питомца, class:"col-form-label" %>
     <%= f.date_field :bday, class:"form-control", value: Date.today %>
+    <%= f.label :Интервал_кормления_в_днях, class:"col-form-label" %>
+    <%= f.number_field(:feedtimes, in: 1..365, step: 1, value: 1) %>
+
 
     <br>
     <%= f.submit :Записать , class: "btn btn-success" %>
