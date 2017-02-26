@@ -1,0 +1,1 @@
+json.array! @molts, partial: 'molts/molt', as: :molt

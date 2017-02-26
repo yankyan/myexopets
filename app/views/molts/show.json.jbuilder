@@ -1,0 +1,1 @@
+json.partial! "molts/molt", molt: @molt

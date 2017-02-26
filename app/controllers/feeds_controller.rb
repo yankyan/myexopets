@@ -33,7 +33,7 @@ class FeedsController < ApplicationController
     respond_to do |format|
       if @feed.save
         feeding
-        format.html { redirect_to pets_path, notice: 'Информация о кормлении успешно сохранена.' }
+        format.html { redirect_to pet_path(@feed.pet_id), notice: 'Информация о кормлении успешно сохранена.' }
         format.json { render :show, status: :created, location: @feed }
       else
         format.html { redirect_to pets_feeding_path(@feed.pet_id), notice: 'Информация о кормлении не сохранена. Укажтите дату.'}

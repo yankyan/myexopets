@@ -17,6 +17,8 @@ before_action  :authenticate_user!
   # GET /pets/new
   def new
     @pet = current_user.pets.build
+    @pet.feedtimes = 1
+    @pet.bday = Date.today
   end
 
   # GET /pets/1/edit

@@ -1,42 +1,72 @@
-<table class="table">
-<tr>
- <th>Владелец:<br> <%= @pet.user.nikname %></th>
-  <th>Идентификатор питомца:<br> <%= @pet.name %></th>
-  <th>Пол:<br> <%= @pet.sex %></th>
-  <th>Вид:<br> <%= @pet.species %></th>
-  <th>Дата рождения питомца:<br> <%= @pet.bday %></th>
-  <th>Интервал кормления:<br> <%= @pet.feedtimes %> (в днях)</th>
-</tr>
-</table>
-<strong>Описание:</strong>   <%= @pet.desk %>
+
+        <th>Владелец: <%= @pet.user.nikname %></th><br>
+        <th>Идентификатор питомца: <%= @pet.name %></th><br>
+        <th>Пол:<%= @pet.sex %></th><br>
+        <th>Вид: <%= @pet.species %></th><br>
+        <th>Дата рождения питомца: <%= @pet.bday %></th><br>
+        <th>Интервал кормления: <%= @pet.feedtimes %> (в днях)</th><br>
+
+    <strong>Описание:</strong>   <%= @pet.desk %>
+        <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+          <a data-toggle="collapse" data-parent="#accordion" href="#lastfeed" aria-expanded="true" aria-controls="collapseOne">
+        <center>Последнее кормление <%= @pet.lastfeed%>. (нажмите, что бы посмотреть историю кормлений)
+        </center>
+      </a>
+      <div id="lastfeed" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <%= link_to 'Покормить', pets_feeding_path(@pet), class: "btn btn-success btn-sm" %>
+        <table class="table table-inverse">
+          <thead>
+          <tr>
+            <th>Дата кормления</th>
+            <th>Дополнительная информация</th>
+            <th><% render 'feeds/form', feed: Feed.new %>
+            </th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <% @pet.feeds.order(:date).reverse_order.each do |feed| %>
+              <td><%= feed.date %></td>
+              <td><%= feed.desk %></td>
+              <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
 
 
+      </div>
+      </div>
+        <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+          <a data-toggle="collapse" data-parent="#accordion" href="#molting" aria-expanded="true" aria-controls="collapseOne">
+            <center> Последняя линька <%= @pet.molts.order(:date).last.date%>. (нажмите, что бы посмотреть историю линек)</center>
+          </a>
+          <div id="molting" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <%= link_to 'Добавить линьку', pets_molting_path(@pet), class: "btn btn-success btn-sm"  %>
+            <table class="table table-inverse">
+              <thead>
+              <tr>
+                <th>Дата линьки</th>
+            <th><% render 'molts/form', molt: Molt.new %>
+            </th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @pet.molts.order(:date).reverse_order.each do |feed| %>
+                  <td><%= feed.date %></td>
+
+                  <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
 
 
-
-<table class="table table-inverse">
-  <thead>
-  <tr>
-    <th>Дата кормления</th>
-    <th>Дополнительная информация</th>
-
-  </tr>
-  </thead>
-
-  <tbody>
-<% @pet.feeds.order(:date).reverse_order.each do |feed| %>
+          </div>
+        </div>
 
 
-    <td><%= feed.date %></td>
-      <td><%= feed.desk %></td>
-
-      <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
-
-    </tr>
-<% end %>
-</tbody>
-</table>
-<%= link_to 'Покормить', pets_feeding_path(@pet), class: "btn btn-success" %>
 <%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "btn btn-success" %>
-
 <%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger" %>
+
+
