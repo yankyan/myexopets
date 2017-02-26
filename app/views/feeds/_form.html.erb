@@ -12,9 +12,9 @@
     </div>
   <% end %>
 
-    <%= f.label :Описание, class:"col-form-label" %>
+    <%= f.label :desk, "Описание", class:"col-form-label" %>
     <%= f.text_area :desk, class:"form-control"  %>
-    <%= f.label :Дата_кормления, class:"col-form-label" %>
+    <%= f.label :date, "Дата кормления", class:"col-form-label" %>
     <%= f.date_field :date, class:"form-control", value: Date.today %>
 <br>
     <%= f.hidden_field :pet_id, :value => params.require(:id).to_i %>

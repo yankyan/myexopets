@@ -7,13 +7,16 @@
     </div>
   <% end %>
 
-    <%= f.label :Имя_питомца, class:"col-form-label" %>
-    <%= f.text_field :name, class:"form-control" %>
-    <%= f.label :Описание, class:"col-form-label" %>
+      <%= f.label :name, "Идентификатор питомца", class:"col-form-label" %>
+      <%= f.text_field :name, class:"form-control" %>
+      <%= f.label :species, "Вид", class:"col-form-label" %>
+      <%= f.text_field :species, class:"form-control" %>
+
+    <%= f.label :desk, "Описание", class:"col-form-label" %>
     <%= f.text_area :desk, class:"form-control" %>
-    <%= f.label :День_рождения_питомца, class:"col-form-label" %>
+    <%= f.label :bday, "День рождения питомца", class:"col-form-label" %>
     <%= f.date_field :bday, class:"form-control", value: Date.today %>
-    <%= f.label :Интервал_кормления_в_днях, class:"col-form-label" %>
+    <%= f.label :feedtimes, "Интервал кормления в днях", class:"col-form-label" %>
     <%= f.number_field(:feedtimes, in: 1..365, step: 1, value: 1, class:"form-control") %>
 
 
