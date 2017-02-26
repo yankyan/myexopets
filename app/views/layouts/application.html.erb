@@ -10,7 +10,7 @@
 
   <body>
   <div class="container-fluid container-background">
-  <div class="container">
+    <%unless user_signed_in? %><div class="container"><% end%>
   <%= render "layouts/navigation" %>
     <div class="jumbotron">
   <p class="notice"><%= notice %></p>
@@ -18,7 +18,7 @@
 
     <%= yield %>
     </div>
-    </div>
+    <%unless user_signed_in? %></div><% end%>
     </div>
   </body>
 </html>

@@ -73,7 +73,7 @@ class FeedsController < ApplicationController
       @pet = Pet.find(@feed.pet_id)
       if @pet.feeds.order(:date).last.nil?
         @pet.lastfeed = nil
-        @pet.nextfeed=nil
+        @pet.nextfeed = nil
         else
             @pet.lastfeed = @pet.feeds.order(:date).last.date
             @pet.nextfeed=@pet.lastfeed+@pet.feedtimes

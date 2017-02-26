@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226105319) do
+ActiveRecord::Schema.define(version: 20170226110450) do
 
   create_table "feeds", force: :cascade do |t|
     t.string   "desk"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170226105319) do
     t.date     "nextfeed"
     t.integer  "feedtimes"
     t.string   "species"
+    t.string   "sex"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
