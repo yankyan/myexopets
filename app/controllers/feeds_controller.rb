@@ -71,8 +71,15 @@ class FeedsController < ApplicationController
   private
     def feeding
       @pet = Pet.find(@feed.pet_id)
-      @pet.lastfeed = @pet.feeds.order(:date).last.date
-      @pet.nextfeed=@pet.lastfeed+@pet.feedtimes
+      if @pet.feeds.order(:date).last.nil?
+        @pet.lastfeed = nil
+        @pet.nextfeed=nil
+        else
+            @pet.lastfeed = @pet.feeds.order(:date).last.date
+            @pet.nextfeed=@pet.lastfeed+@pet.feedtimes
+      end
+
+
       @pet.save
 
     end
