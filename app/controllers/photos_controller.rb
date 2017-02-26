@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :owner, except: [:create, :destroy, :index, :show]
+  before_action :owner, except: [:create, :destroy, :index, :show, :pet_photos]
   # GET /photos
   # GET /photos.json
   def index
@@ -13,6 +13,11 @@ class PhotosController < ApplicationController
   end
 
   # GET /photos/new
+  def pet_photos
+    @photos = Pet.find(params.require(:id).to_i).photos
+    render :index
+  end
+
   def new
     @photo = Photo.new
   end
