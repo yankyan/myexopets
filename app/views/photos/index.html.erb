@@ -1,0 +1,17 @@
+ <% @photos.each do |photo| %>
+     <div class="card photocard">
+     <div class="card-block">
+        <%= image_tag photo.image.url(:medium) %><br>
+       <strong><%= Pet.find(photo.pet_id).name %></strong><br>
+        <%= photo.desk%> <br>
+        <%= link_to 'Подробней', photo, class: "btn btn-success btn-sm" %>
+       <% if User.find(Pet.find(photo.pet_id).user_id) == current_user %>
+        <%= link_to 'Удалить', photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %>
+       <% end %>
+     </div>
+     </div>
+    <% end %>
+
+<br>
+
+

@@ -1,0 +1,18 @@
+<center>
+<div class="card photocard">
+  <div class="card-block">
+
+    <p>
+      <%= image_tag @photo.image.url(:large) %><br>
+      <strong> <%= @photo.pet.name %></strong><br>
+      <%= @photo.desk %>
+    </p>
+    <% if User.find(@photo.pet.user_id) == current_user %>
+        <%= link_to 'Удалить', @photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %>
+    <% end %>
+
+    <%= link_to 'Back', photos_path %>
+
+  </div>
+</div>
+</center>

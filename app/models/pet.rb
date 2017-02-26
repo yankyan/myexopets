@@ -3,4 +3,5 @@ class Pet < ApplicationRecord
   belongs_to :user
   has_many :feeds, dependent: :destroy
   has_many :molts, dependent: :destroy
+  has_many :photos, dependent: :destroy
 end

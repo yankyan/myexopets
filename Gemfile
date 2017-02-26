@@ -7,6 +7,8 @@ end
 
 gem 'devise', '~> 4.2.0'
 gem 'bootstrap', '~> 4.0.0.alpha5'
+gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk', '~> 2.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use Puma as the app server

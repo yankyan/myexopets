@@ -1,4 +1,7 @@
-
+<%=
+  unless @pet.photos.last.nil?
+  image_tag @pet.photos.last.image.url(:large)
+end%><br>
         <th>Владелец: <%= @pet.user.nikname %></th><br>
         <th>Идентификатор питомца: <%= @pet.name %></th><br>
         <th>Пол:<%= @pet.sex %></th><br>
@@ -71,7 +74,7 @@
           </div>
         </div>
 
-
+        <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "btn btn-success"  %>
 <%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "btn btn-success" %>
 <%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger" %>
 

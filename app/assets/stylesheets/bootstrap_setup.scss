@@ -8,6 +8,13 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
 
+.photocard {
+  display:inline-block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+}
+
 .pretty th .current {
   padding-right: 12px;
   background-repeat: no-repeat;
