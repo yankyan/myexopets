@@ -39,7 +39,13 @@
       </div>
         <div class="card card-inverse" style="background-color: #333; border-color: #333;">
           <a data-toggle="collapse" data-parent="#accordion" href="#molting" aria-expanded="true" aria-controls="collapseOne">
-            <center> Последняя линька <%= @pet.molts.order(:date).last.date%>. (нажмите, что бы посмотреть историю линек)</center>
+            <center>
+              Последняя линька
+              <% if @pet.molts.last.nil? %>
+                    не известна
+                        <% else
+               @pet.molts.order(:date).last.date
+              end%>. (нажмите, что бы посмотреть историю линек)</center>
           </a>
           <div id="molting" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
             <%= link_to 'Добавить линьку', pets_molting_path(@pet), class: "btn btn-success btn-sm"  %>
