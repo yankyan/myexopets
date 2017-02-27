@@ -1,6 +1,6 @@
 <%=
   unless @pet.photos.last.nil?
-  image_tag @pet.photos.last.image.url(:large)
+  image_tag @pet.photos.last.image.url(:thumb)
 end%><br>
         <th>Владелец: <%= @pet.user.nikname %></th><br>
         <th>Идентификатор питомца: <%= @pet.name %></th><br>
