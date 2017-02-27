@@ -9,12 +9,16 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 @import "bootstrap";
 
 .photocard {
+  width: 33%;
   display:inline-block;
   margin-left:auto;
   margin-right:auto;
   text-align:left;
 }
-
+.img {
+  width: 100%;
+  height: auto;
+}
 .pretty th .current {
   padding-right: 12px;
   background-repeat: no-repeat;

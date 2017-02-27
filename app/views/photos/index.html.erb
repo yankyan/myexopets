@@ -1,7 +1,8 @@
  <% @photos.each do |photo| %>
-     <div class="card photocard">
+     <div class="card photocard ">
      <div class="card-block">
-        <%= image_tag photo.image.url(:medium) %><br>
+        <%= image_tag photo.image.url(:medium), class: "img img-thumbnail", alt: Pet.find(photo.pet_id).sex.to_s+' '+Pet.find(photo.pet_id).species,
+                      title: Pet.find(photo.pet_id).sex.to_s+' '+Pet.find(photo.pet_id).species.to_s+' '+photo.desk.to_s  %><br>
        <strong>
        <%= Pet.find(photo.pet_id).sex %>
        <%= Pet.find(photo.pet_id).species %></strong><br>
