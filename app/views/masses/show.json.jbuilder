@@ -1,0 +1,1 @@
+json.partial! "masses/mass", mass: @mass

@@ -29,7 +29,7 @@ class MoltsController < ApplicationController
 
     respond_to do |format|
       if @molt.save
-        format.html { redirect_to pet_path(@molt.pet_id), notice: 'Molt was successfully created.' }
+        format.html { redirect_to pet_path(@molt.pet_id), notice: 'Данные о линьке успешно сохранены.' }
         format.json { render :show, status: :created, location: @molt }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class MoltsController < ApplicationController
   def update
     respond_to do |format|
       if @molt.update(molt_params)
-        format.html { redirect_to pet_path(@molt.pet_id), notice: 'Molt was successfully updated.' }
+        format.html { redirect_to pet_path(@molt.pet_id), notice: 'Данные о линьке успешно обновлены.' }
         format.json { render :show, status: :ok, location: @molt }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class MoltsController < ApplicationController
   def destroy
     @molt.destroy
     respond_to do |format|
-      format.html { redirect_to pet_path(@molt.pet_id), notice: 'Molt was successfully destroyed.' }
+      format.html { redirect_to pet_path(@molt.pet_id), notice: 'Данные о линьке успешно удалены.' }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,33 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+<div class="col-sm-9">
+<%= area_chart @masses.group(:date).maximum(:mass) %>
+
+<%= link_to 'Записать вес', pets_massing_path(params.require(:id).to_i), class: "btn btn-success" %>
+</div><div class="col-sm-3">
+  <table class="table table-inverse">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Вес</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @masses.last(5).each do |mass| %>
+      <tr>
+
+        <td><%= mass.date %></td>
+        <td><%= mass.mass %></td>
+
+
+        <td><%= link_to 'Удалить', mass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+<br>
+
+
+</div>

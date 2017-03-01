@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226191035) do
+ActiveRecord::Schema.define(version: 20170228204713) do
 
   create_table "feeds", force: :cascade do |t|
     t.string   "desk"
     t.date     "date"
     t.integer  "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "masses", force: :cascade do |t|
+    t.integer  "pet_id"
+    t.date     "date"
+    t.integer  "mass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,6 +5,8 @@
 <table class="table table-inverse">
   <thead>
     <tr>
+      <th>#</th>
+
       <th><%= sortable "name", "Идентификатор"%></th>
       <th><%= sortable "species", "Вид"%></th>
       <th><%= sortable "sex", "Пол" %></th>
@@ -15,16 +17,24 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody><% i=0%>
     <% @pets.each do |pet| %>
+      <td><%= i+=1 %></td>
 
-        <td class="pet-name"><%= link_to pet.name, pet %></td>
+      <td class="pet-name"><%= link_to pet.name, pet %></td>
       <td><%= pet.species %></td>
       <td><%= pet.sex %></td>
 
       <td><%= pet.bday %></td>
       <td><%= pet.lastfeed%></td>
-      <td><%= pet.nextfeed%></td>
+      <td> <%pet.nextfeed = Date.today if pet.nextfeed.nil?%>
+        <% if pet.nextfeed <= Date.today%>
+        <span style="background-color: #b00100"> <%= pet.nextfeed%></span>
+            <%else%>
+            <%= pet.nextfeed%>
+            <% end%>
+
+            </td>
       <td>
       <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
         <%= link_to 'Покормить', pets_feeding_path(pet), class: "btn btn-success" %>

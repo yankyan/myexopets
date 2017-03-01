@@ -1,15 +1,30 @@
-<%=
+<div class="container">
+  <div class="row ">
+<div class="card-block col-sm-3">
+
+  <%=
   unless @pet.photos.last.nil?
   image_tag @pet.photos.last.image.url(:thumb)
-end%><br>
-        <th>Владелец: <%= @pet.user.nikname %></th><br>
-        <th>Идентификатор питомца: <%= @pet.name %></th><br>
-        <th>Пол:<%= @pet.sex %></th><br>
-        <th>Вид: <%= @pet.species %></th><br>
-        <th>Дата рождения питомца: <%= @pet.bday %></th><br>
-        <th>Интервал кормления: <%= @pet.feedtimes %> (в днях)</th><br>
+  end%>
+  <ul class="list-group">
 
+  <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "list-group-item list-group-item-success"  %>
+  <%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "list-group-item list-group-item-success" %>
+
+  <%= link_to 'График веса', pet_masses_path, class: "list-group-item list-group-item-success" %>
+    <%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "list-group-item list-group-item-danger" %>
+
+  </ul>
+</div><div class="col-sm-9">
+    <div class="col-sm-5">
+    <strong>Владелец:</strong> <%= @pet.user.nikname %><br>
+    <strong>Идентификатор питомца:</strong> <%= @pet.name %><br>
+    <strong>Пол:</strong><%= @pet.sex %><br>
+    <strong>Вид: </strong><%= @pet.species %><br>
+    <strong>Дата рождения питомца:</strong> <%= @pet.bday %><br>
+    <strong>Интервал кормления:</strong> <%= @pet.feedtimes %> (в днях)<br>
     <strong>Описание:</strong>   <%= @pet.desk %>
+  </div><div class="col-sm-7">
         <div class="card card-inverse" style="background-color: #333; border-color: #333;">
           <a data-toggle="collapse" data-parent="#accordion" href="#lastfeed" aria-expanded="true" aria-controls="collapseOne">
         <center>Последнее кормление <%= @pet.lastfeed%>. (нажмите, что бы посмотреть историю кормлений)
@@ -46,9 +61,9 @@ end%><br>
               Последняя линька
               <% if @pet.molts.last.nil? %>
                     не известна
-                        <% else
-               @pet.molts.order(:date).last.date
-              end%>. (нажмите, что бы посмотреть историю линек)</center>
+                        <% else%>
+               <%= @pet.molts.order(:date).last.date%>
+              <%end%>. (нажмите, что бы посмотреть историю линек)</center>
           </a>
           <div id="molting" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
             <%= link_to 'Добавить линьку', pets_molting_path(@pet), class: "btn btn-success btn-sm"  %>
@@ -73,9 +88,6 @@ end%><br>
 
           </div>
         </div>
+  </div>
 
-        <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "btn btn-success"  %>
-<%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "btn btn-success" %>
-<%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger" %>
-
-
+  </div></div></div>

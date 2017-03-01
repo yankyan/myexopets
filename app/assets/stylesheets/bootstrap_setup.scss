@@ -8,6 +8,16 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
 
+.avatar{
+  width: auto;
+}
+.homeleft{
+  display:inline-block;
+  width: 30%;
+}
+.homerigth{
+  width: 50%;
+}
 .photocard {
   width: 33%;
   display:inline-block;
@@ -44,7 +54,9 @@ A:focus{
 }
 
 
-
+.jumbotron{
+  min-height: 70vh;
+}
 .container-background {
   min-height: 100vh;
   width: 100%;
