@@ -12,7 +12,6 @@ gem 'aws-sdk', '~> 2.7'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 gem "chartkick"
-gem 'sprockets_better_errors'
 gem 'groupdate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
