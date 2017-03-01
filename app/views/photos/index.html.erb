@@ -1,22 +1,27 @@
  <% @photos.each do |photo| %>
      <div class="card photocard ">
      <div class="card-block">
+       <a href="<%= photo_url(photo) %>">
         <%= image_tag photo.image.url(:medium), class: "img img-thumbnail", alt: Pet.find(photo.pet_id).sex.to_s+' '+Pet.find(photo.pet_id).species,
                       title: Pet.find(photo.pet_id).sex.to_s+' '+Pet.find(photo.pet_id).species.to_s+' '+photo.desk.to_s  %><br>
-       <strong>
+       </a>
+         <strong>
        <%= Pet.find(photo.pet_id).sex %>
        <%= Pet.find(photo.pet_id).species %></strong><br>
         <%= photo.desk%> <br>
-        <%= link_to 'Увеличить', photo, class: "btn btn-success btn-sm" %>
-       <%= link_to 'Все фото этого питомца', pet_photos_path(photo.pet_id), class: "btn btn-success btn-sm" %>
-       <% if User.find(Pet.find(photo.pet_id).user_id) == current_user %>
-        <%= link_to 'Удалить', photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %>
-       <% end %>
+       <ul class="list-group">
+        <%= link_to 'Все фото с этим питомцем', pet_photos_path(photo.pet_id), class: "list-group-item list-group-item-success" %>
+        <% if User.find(Pet.find(photo.pet_id).user_id) == current_user %>
+             <%= link_to 'Перейти на страницу питомца', pet_path(photo.pet_id), class: "list-group-item list-group-item-success" %>
+
+           <%= link_to 'Удалить', photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "list-group-item list-group-item-danger" %>
+         <% end %></ul>
      </div>
      </div>
     <% end %>
 
  <%= will_paginate @photos %>
+
 
 <br>
 

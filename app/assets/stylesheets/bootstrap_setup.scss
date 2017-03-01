@@ -26,7 +26,7 @@ $jumbotron-bg:    rgba(255,255,255, 0.7);
   text-align:left;
 }
 .img {
-  width: 100%;
+  width: auto;
   height: auto;
 }
 .pretty th .current {
@@ -55,6 +55,7 @@ A:focus{
 
 
 .jumbotron{
+  padding-top: 12px;
   min-height: 70vh;
 }
 .container-background {

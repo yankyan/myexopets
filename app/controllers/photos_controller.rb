@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all.paginate(:page => params[:page], :per_page => 3)
+    @photos = Photo.all.paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /photos/1
@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def pet_photos
-    @photos = Pet.find(params.require(:id).to_i).photos
+    @photos = Pet.find(params.require(:id).to_i).photos.paginate(:page => params[:page], :per_page => 30)
     render :index
   end
 

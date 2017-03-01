@@ -16,3 +16,6 @@
 //= require turbolinks
 //= require_tree .
 //= require chartkick
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})

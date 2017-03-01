@@ -1,21 +1,18 @@
 <center>
-<div class="card photocard">
-  <div class="card-block">
 
     <p>
-      <%= image_tag @photo.image.url(:large) %><br>
+      <%= image_tag @photo.image.url(:large), alt: @photo.pet.sex.to_s+' '+@photo.pet.species,
+          title: @photo.pet.sex.to_s+' '+@photo.pet.species.to_s+' '+@photo.desk.to_s %><br>
 
       <strong>
         <%= @photo.pet.sex %>
         <%= @photo.pet.species %></strong><br>
       <%= @photo.desk %>
     </p>
-    <% if User.find(@photo.pet.user_id) == current_user %>
-        <%= link_to 'Удалить', @photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %>
-    <% end %>
+  <% if User.find(@photo.pet.user_id) == current_user %>
+      <%= link_to 'Удалить', @photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %>
+  <% end %>
 
-    <%= link_to 'Все фотографии', photos_path , class: "btn btn-success btn-sm" %>
-
-  </div>
-</div>
+  <%= link_to 'Все фотографии', photos_path , class: "btn btn-success btn-sm" %>
+  <br><br>
 </center>

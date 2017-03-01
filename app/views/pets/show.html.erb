@@ -9,6 +9,7 @@
   <ul class="list-group">
 
   <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "list-group-item list-group-item-success"  %>
+    <%= link_to 'Все фото этого питомца', pet_photos_path(@pet.id), class: "list-group-item list-group-item-success" %>
   <%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "list-group-item list-group-item-success" %>
 
   <%= link_to 'График веса', pet_masses_path, class: "list-group-item list-group-item-success" %>
@@ -88,6 +89,40 @@
 
           </div>
         </div>
+
+    <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+      <a data-toggle="collapse" data-parent="#accordion" href="#problems" aria-expanded="true" aria-controls="collapseOne">
+        <center>
+          Последняя проблемма
+          <% if @pet.problems.last.nil? %>
+              не известна
+          <% else%>
+              <%= @pet.problems.order(:date).last.date%>
+          <%end%>. (нажмите, что бы посмотреть все проблеммы)</center>
+      </a>
+      <div id="problems" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <%= link_to 'Записать проблемму', pets_probleming_path(@pet), class: "btn btn-success btn-sm"  %>
+        <table class="table table-inverse">
+          <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Описание</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @pet.problems.order(:date).reverse_order.each do |problem| %>
+              <td><%= problem.date %></td>
+              <td><%= problem.desk %></td>
+
+              <td><%= link_to 'Удалить', problem, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
   </div>
 
   </div></div></div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pet_id: 1
+  date: 2017-03-01
+  desk: MyString
+
+two:
+  pet_id: 1
+  date: 2017-03-01
+  desk: MyString
