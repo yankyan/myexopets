@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Wets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pet</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wets.each do |wet| %>
+      <tr>
+        <td><%= wet.pet_id %></td>
+        <td><%= wet.date %></td>
+        <td><%= link_to 'Show', wet %></td>
+        <td><%= link_to 'Edit', edit_wet_path(wet) %></td>
+        <td><%= link_to 'Destroy', wet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wet', new_wet_path %>

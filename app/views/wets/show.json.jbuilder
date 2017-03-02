@@ -1,0 +1,1 @@
+json.partial! "wets/wet", wet: @wet

@@ -12,12 +12,12 @@
     </div>
   <% end %>
 
-    <%= f.label :date, "Дата взвешивания", class:"col-form-label"  %>
-    <%= f.date_field :date, class:"form-control", value: Date.today %>
-    <%= f.label :mass, "Вес в граммах", class:"col-form-label"  %>
-    <%= f.number_field :mass, class:"form-control", value: 0%>
+    <%= f.label :date, "Дата взвешивания", class:"col-form-label col-sm-3"  %>
+    <%= f.date_field :date, class:" col-sm-2", value: Date.today %>
+    <%= f.label :mass, "Вес в граммах", class:"col-form-label col-sm-3"  %>
+    <%= f.number_field :mass, class:" col-sm-2", value: 0%>
     <%= f.hidden_field :pet_id, :value =>  params.require(:id).to_i %>
-    <%= f.submit :Записать, class: "btn btn-success"%>
-
+    <%= f.submit :Записать, class: " btn-success col-sm-2"%>
+<br><br>
 <% end %>
 </div>

@@ -56,6 +56,40 @@
 
       </div>
       </div>
+    <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+      <a data-toggle="collapse" data-parent="#accordion" href="#lastwet" aria-expanded="true" aria-controls="collapseOne">
+        <center>Последнее увлажнение <% if @pet.wets.last.nil? %>
+              не известно
+          <% else%>
+              <%= @pet.wets.order(:date).last.date%>
+          <%end%>.
+          (нажмите, чтобы посмотреть историю увлажнений)
+        </center>
+      </a>
+      <div id="lastwet" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <% link_to 'Увлажнить', pets_weting_path(@pet), class: "btn btn-success btn-sm" %>
+        <table class="table table-inverse">
+          <thead>
+          <tr>
+            <th>Дата увлажнения</th>
+
+            <th><%= render 'wets/form', wet: Wet.new %>
+
+          </tr>
+          </thead>
+          <tbody>
+          <% @pet.wets.order(:date).reverse_order.each do |wet| %>
+              <td><%= wet.date %></td>
+
+              <td><%= link_to 'Удалить', wet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
         <div class="card card-inverse" style="background-color: #333; border-color: #333;">
           <a data-toggle="collapse" data-parent="#accordion" href="#molting" aria-expanded="true" aria-controls="collapseOne">
             <center>
@@ -64,15 +98,15 @@
                     не известна
                         <% else%>
                <%= @pet.molts.order(:date).last.date%>
-              <%end%>. (нажмите, что бы посмотреть историю линек)</center>
+              <%end%>. (нажмите, чтобы посмотреть историю линек)</center>
           </a>
           <div id="molting" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-            <%= link_to 'Добавить линьку', pets_molting_path(@pet), class: "btn btn-success btn-sm"  %>
+            <% link_to 'Добавить линьку', pets_molting_path(@pet), class: "btn btn-success btn-sm"  %>
             <table class="table table-inverse">
               <thead>
               <tr>
                 <th>Дата линьки</th>
-            <th><% render 'molts/form', molt: Molt.new %>
+            <th><%= render 'molts/form', molt: Molt.new %>
             </th>
               </tr>
               </thead>
@@ -93,15 +127,15 @@
     <div class="card card-inverse" style="background-color: #333; border-color: #333;">
       <a data-toggle="collapse" data-parent="#accordion" href="#problems" aria-expanded="true" aria-controls="collapseOne">
         <center>
-          Последняя проблемма
+          Последняя проблема
           <% if @pet.problems.last.nil? %>
               не известна
           <% else%>
               <%= @pet.problems.order(:date).last.date%>
-          <%end%>. (нажмите, что бы посмотреть все проблеммы)</center>
+          <%end%>. (нажмите, чтобы посмотреть все проблемы)</center>
       </a>
       <div id="problems" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-        <%= link_to 'Записать проблемму', pets_probleming_path(@pet), class: "btn btn-success btn-sm"  %>
+        <%= link_to 'Записать проблему', pets_probleming_path(@pet), class: "btn btn-success btn-sm"  %>
         <table class="table table-inverse">
           <thead>
           <tr>

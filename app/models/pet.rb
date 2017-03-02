@@ -6,4 +6,5 @@ class Pet < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :mass, dependent: :destroy
   has_many :problems, dependent: :destroy
+  has_many :wets, dependent: :destroy
 end

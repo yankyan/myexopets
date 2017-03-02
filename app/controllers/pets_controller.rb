@@ -84,6 +84,6 @@ before_action  :authenticate_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:name, :species, :sex, :desk, :bday, :feedtimes)
+      params.require(:pet).permit(:name, :species, :sex, :desk, :bday, :feedtimes, :wettime)
     end
 end

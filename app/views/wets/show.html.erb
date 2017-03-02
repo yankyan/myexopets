@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= @wet.pet_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @wet.date %>
+</p>
+
+<%= link_to 'Edit', edit_wet_path(@wet) %> |
+<%= link_to 'Back', wets_path %>

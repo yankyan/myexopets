@@ -1,0 +1,1 @@
+json.array! @wets, partial: 'wets/wet', as: :wet

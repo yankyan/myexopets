@@ -1,21 +1,19 @@
-
-  <%= form_for(molt) do |f| %>
-  <% if molt.errors.any? %>
+<%= form_for(wet) do |f| %>
+  <% if wet.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(molt.errors.count, "error") %> prohibited this molt from being saved:</h2>
+      <h2><%= pluralize(wet.errors.count, "error") %> prohibited this wet from being saved:</h2>
 
       <ul>
-      <% molt.errors.full_messages.each do |message| %>
+      <% wet.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-
     <%= f.date_field :date, class:"form-control", value: Date.today %>
     <%= f.hidden_field :pet_id, :value =>  params.require(:id).to_i %>
-<br>
+    <br>
     <%= f.submit  :Записать , class: "btn btn-success"%>
 
 <% end %>

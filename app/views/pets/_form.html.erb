@@ -25,6 +25,8 @@
     <%= f.date_field :bday, class:"form-control" %>
     <%= f.label :feedtimes, "Интервал кормления в днях", class:"col-form-label" %>
     <%= f.number_field(:feedtimes, in: 1..365, step: 1, class:"form-control") %>
+      <%= f.label :wettime, "Интервал увлажнения в днях", class:"col-form-label" %>
+      <%= f.number_field(:wettime, in: 1..365, step: 1, class:"form-control") %>
 
 
     <br>

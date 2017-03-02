@@ -1,8 +1,7 @@
 <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 <div class="col-sm-9">
 <%= area_chart @masses.group(:date).maximum(:mass) %>
-
-<%= link_to 'Записать вес', pets_massing_path(params.require(:id).to_i), class: "btn btn-success" %>
+  <%= render 'masses/form', mass: Mass.new %>
 </div><div class="col-sm-3">
   <table class="table table-inverse">
   <thead>
