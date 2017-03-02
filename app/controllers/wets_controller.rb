@@ -71,7 +71,11 @@ class WetsController < ApplicationController
   private
   def nextwetset
     @pet=Pet.find(@wet.pet_id)
+    if @pet.wets.last.nil?
+      @pet.nextwet = Date.today
+    elsif
     @pet.nextwet=@pet.wets.order(:date).last.date+@pet.wettime.to_i
+    end
     @pet.save
   end
     # Use callbacks to share common setup or constraints between actions.
