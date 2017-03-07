@@ -1,7 +1,8 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
-before_action  :authenticate_user!
-  before_action :owner, except: [:index, :new, :create]
+before_action  :authenticate_user!, except: [:show]
+  before_action :owner, except: [:index, :new, :create, :show]
+  before_action :pet_private, only: [:show]
   helper_method :sort_column, :sort_direction
   # GET /pets
   # GET /pets.json
@@ -75,7 +76,17 @@ before_action  :authenticate_user!
   end
   def owner
     @pet = current_user.pets.find_by(id: params[:id])
-    redirect_to pets_path if @pet.nil?
+    if @pet.nil?
+    redirect_to pets_path
+    end
+
+
+  end
+  def pet_private
+    if !Pet.find_by(id: params[:id]).private or (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?)
+      elsif
+      redirect_to pets_path
+    end
   end
     # Use callbacks to share common setup or constraints between actions.
     def set_pet
@@ -84,6 +95,6 @@ before_action  :authenticate_user!
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_params
-      params.require(:pet).permit(:name, :species, :sex, :desk, :bday, :feedtimes, :wettime)
+      params.require(:pet).permit(:name, :species, :sex, :desk, :bday, :feedtimes, :wettime, :private)
     end
 end

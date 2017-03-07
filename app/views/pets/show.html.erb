@@ -5,32 +5,46 @@
       <img src="<%= @pet.photos.last.image.url(:thumb)%>" class="avatar img-thumbnail">
   <% end%>
   <ul class="list-group">
-
-  <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "list-group-item list-group-item-success"  %>
     <%= link_to 'Все фото этого питомца', pet_photos_path(@pet.id), class: "list-group-item list-group-item-success" %>
-  <%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "list-group-item list-group-item-success" %>
+    <%= link_to 'График веса', pet_masses_path, class: "list-group-item list-group-item-success" %>
 
-  <%= link_to 'График веса', pet_masses_path, class: "list-group-item list-group-item-success" %>
-    <%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "list-group-item list-group-item-danger" %>
+    <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+        <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "list-group-item list-group-item-success"  %>
+        <%= link_to 'Редактировать анкету питомца', edit_pet_path(@pet), class: "list-group-item list-group-item-success" %>
+
+        <%= link_to 'Удалить всю информацию о питомце', @pet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "list-group-item list-group-item-danger" %>
+
+    <% end %>
+
 
   </ul>
-</div><div class="col-sm-9">
+</div>
+    <div class="col-sm-9 ">
+
     <div class="col-sm-5">
           <strong>Владелец:</strong> <%= @pet.user.nikname %><br>
+      <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
     <strong>Идентификатор питомца:</strong> <%= @pet.name %><br>
+      <% end %>
+
     <strong>Пол:</strong><%= @pet.sex %><br>
     <strong>Вид: </strong><%= @pet.species %><br>
     <strong>Дата рождения питомца:</strong> <%= @pet.bday %><br>
     <strong>Интервал кормления:</strong> <%= @pet.feedtimes %> (в днях)<br>
     <strong>Описание:</strong>   <%= @pet.desk %>
-  </div><div class="col-sm-7">
+  </div>
+      <div class="col-sm-7">
         <div class="card card-inverse" style="background-color: #333; border-color: #333;">
           <a data-toggle="collapse" data-parent="#accordion" href="#lastfeed" aria-expanded="true" aria-controls="collapseOne">
         <center>Последнее кормление <%= @pet.lastfeed%>. (нажмите, что бы посмотреть историю кормлений)
         </center>
       </a>
       <div id="lastfeed" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
         <%= link_to 'Покормить', pets_feeding_path(@pet), class: "btn btn-success btn-sm" %>
+        <% end %>
         <table class="table table-inverse">
           <thead>
           <tr>
@@ -45,7 +59,11 @@
           <% @pet.feeds.order(:date).reverse_order.each do |feed| %>
               <td><%= feed.date %></td>
               <td><%= feed.desk %></td>
-              <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
+                  <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              <% end %>
+
               </tr>
           <% end %>
           </tbody>
@@ -70,8 +88,11 @@
           <thead>
           <tr>
             <th>Дата увлажнения</th>
+            <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
 
-            <th><%= render 'wets/form', wet: Wet.new %>
+                <th><%= render 'wets/form', wet: Wet.new %>
+            <% end %>
+
 
           </tr>
           </thead>
@@ -79,7 +100,10 @@
           <% @pet.wets.order(:date).reverse_order.each do |wet| %>
               <td><%= wet.date %></td>
 
-              <td><%= link_to 'Удалить', wet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
+                  <td><%= link_to 'Удалить', wet, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              <% end %>
               </tr>
           <% end %>
           </tbody>
@@ -104,7 +128,10 @@
               <thead>
               <tr>
                 <th>Дата линьки</th>
-            <th><%= render 'molts/form', molt: Molt.new %>
+                <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
+                    <th><%= render 'molts/form', molt: Molt.new %>
+                <% end %>
             </th>
               </tr>
               </thead>
@@ -112,7 +139,10 @@
               <% @pet.molts.order(:date).reverse_order.each do |feed| %>
                   <td><%= feed.date %></td>
 
-                  <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+                  <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
+                      <td><%= link_to 'Удалить', feed, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+                  <% end %>
                   </tr>
               <% end %>
               </tbody>
@@ -125,6 +155,7 @@
     <div class="card card-inverse" style="background-color: #333; border-color: #333;">
       <a data-toggle="collapse" data-parent="#accordion" href="#problems" aria-expanded="true" aria-controls="collapseOne">
         <center>
+
           Последняя проблема
           <% if @pet.problems.last.nil? %>
               не известна
@@ -133,7 +164,10 @@
           <%end%>. (нажмите, чтобы посмотреть все проблемы)</center>
       </a>
       <div id="problems" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-        <%= link_to 'Записать проблему', pets_probleming_path(@pet), class: "btn btn-success btn-sm"  %>
+        <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
+
+            <%= link_to 'Записать проблему', pets_probleming_path(@pet), class: "btn btn-success btn-sm"  %>
+        <% end %>
         <table class="table table-inverse">
           <thead>
           <tr>
@@ -145,8 +179,11 @@
           <% @pet.problems.order(:date).reverse_order.each do |problem| %>
               <td><%= problem.date %></td>
               <td><%= problem.desk %></td>
+              <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
 
-              <td><%= link_to 'Удалить', problem, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+                  <td><%= link_to 'Удалить', problem, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm" %></td>
+              <% end %>
+
               </tr>
           <% end %>
           </tbody>
@@ -157,8 +194,11 @@
       </div>
     </div>
   </div>
+<div class="col-sm-12">
+    <% if (user_signed_in? and !current_user.pets.find_by(id: params[:id]).nil?) %>
     <%= render 'postform', post: Post.new %>
-<br>
+    <% end %>
+        <br>
 
     <% @pet.posts.order(:updated_at).reverse_order.each do |post| %>
         <div class="card">
@@ -173,6 +213,7 @@
         <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm " %>
             <%end %>
                 </div></div>
-    <% end %>
 
+    <% end %>
+</div>
   </div></div></div>

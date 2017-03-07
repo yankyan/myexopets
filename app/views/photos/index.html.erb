@@ -13,9 +13,9 @@
         <%= photo.desk%> <br>
        <ul class="list-group">
         <%= link_to 'Все фото с этим питомцем', pet_photos_path(photo.pet_id), class: "list-group-item list-group-item-success" %>
-        <% if User.find(Pet.find(photo.pet_id).user_id) == current_user %>
-             <%= link_to 'Перейти на страницу питомца', pet_path(photo.pet_id), class: "list-group-item list-group-item-success" %>
 
+             <%= link_to 'Перейти на страницу питомца', pet_path(photo.pet_id), class: "list-group-item list-group-item-success" %>
+         <% if User.find(Pet.find(photo.pet_id).user_id) == current_user %>
            <%= link_to 'Удалить', photo, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "list-group-item list-group-item-danger" %>
          <% end %></ul>
      </div>

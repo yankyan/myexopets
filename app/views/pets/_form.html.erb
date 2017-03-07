@@ -28,6 +28,8 @@
       <%= f.label :wettime, "Интервал увлажнения в днях", class:"col-form-label" %>
       <%= f.number_field(:wettime, in: 1..365, step: 1, class:"form-control") %>
 
+      <%= f.check_box :private %>
+      <%= f.label :private, "Не показывать информацию об этом питомце никому кроме меня", class:"col-form-label" %>
 
     <br>
     <%= f.submit :Записать , class: "btn btn-success" %>
