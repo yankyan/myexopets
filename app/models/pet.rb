@@ -7,4 +7,5 @@ class Pet < ApplicationRecord
   has_many :mass, dependent: :destroy
   has_many :problems, dependent: :destroy
   has_many :wets, dependent: :destroy
+  has_many :posts, dependent: :destroy
 end

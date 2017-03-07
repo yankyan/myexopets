@@ -1,11 +1,9 @@
 <div class="container">
   <div class="row ">
 <div class="card-block col-sm-3">
-
-  <%=
-  unless @pet.photos.last.nil?
-  image_tag @pet.photos.last.image.url(:thumb)
-  end%>
+  <% unless @pet.photos.last.nil? %>
+      <img src="<%= @pet.photos.last.image.url(:thumb)%>" class="avatar img-thumbnail">
+  <% end%>
   <ul class="list-group">
 
   <%= link_to 'Добавить фото', pets_photing_path(@pet), class: "list-group-item list-group-item-success"  %>
@@ -18,7 +16,7 @@
   </ul>
 </div><div class="col-sm-9">
     <div class="col-sm-5">
-    <strong>Владелец:</strong> <%= @pet.user.nikname %><br>
+          <strong>Владелец:</strong> <%= @pet.user.nikname %><br>
     <strong>Идентификатор питомца:</strong> <%= @pet.name %><br>
     <strong>Пол:</strong><%= @pet.sex %><br>
     <strong>Вид: </strong><%= @pet.species %><br>
@@ -155,8 +153,26 @@
         </table>
 
 
+
       </div>
     </div>
   </div>
+    <%= render 'postform', post: Post.new %>
+<br>
+
+    <% @pet.posts.order(:updated_at).reverse_order.each do |post| %>
+        <div class="card">
+          <div class="card-block">
+            <h6 class="card-subtitle mb-2 text-muted">
+        <%= post.updated_at.to_s(:ru_datetime)%><br>
+            </h6>
+<div class="card-text ">
+        <%= post.content%>
+</div>
+            <% if User.find(Pet.find(post.pet_id).user_id) == current_user %>
+        <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверенны?' }, class: "btn btn-danger btn-sm " %>
+            <%end %>
+                </div></div>
+    <% end %>
 
   </div></div></div>
