@@ -11,9 +11,13 @@
       </ul>
     </div>
   <% end %>
-
+   <% if @pet.feeds.last.nil?
+   @feeddesk=""
+   else
+   @feeddesk=@pet.feeds.last.desk
+   end%>
     <%= f.label :desk, "Описание", class:"col-form-label" %>
-    <%= f.text_area :desk, class:"form-control", value: @pet.feeds.last.desk  %>
+    <%= f.text_area :desk, class:"form-control", value: @feeddesk  %>
     <%= f.label :date, "Дата кормления", class:"col-form-label" %>
     <%= f.date_field :date, class:"form-control", value: Date.today %>
 <br>
@@ -23,6 +27,3 @@
     <%= f.submit :Записать , class: "btn btn-success" %>
   </div>
 <% end %>
-  <%=
-
-  %>
