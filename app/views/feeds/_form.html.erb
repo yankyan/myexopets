@@ -13,7 +13,7 @@
   <% end %>
 
     <%= f.label :desk, "Описание", class:"col-form-label" %>
-    <%= f.text_area :desk, class:"form-control"  %>
+    <%= f.text_area :desk, class:"form-control", value: @pet.feeds.last.desk  %>
     <%= f.label :date, "Дата кормления", class:"col-form-label" %>
     <%= f.date_field :date, class:"form-control", value: Date.today %>
 <br>
